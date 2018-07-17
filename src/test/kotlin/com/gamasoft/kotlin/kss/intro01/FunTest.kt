@@ -19,6 +19,23 @@ class FunTest {
     }
 
     @Test
+    fun nestedFun(){
+
+        //replace TODO with a value to make the test pass
+        fun myFun(): String {
+            fun myNestedFun(): String {
+                return TODO()
+            }
+            return myNestedFun()
+        }
+
+        assert(myFun()).isEqualTo("Kotlin Fun can be nested!")
+    }
+
+
+
+
+    @Test
     fun valOrVar(){
 
         var iCanChange = 5
