@@ -34,8 +34,8 @@ class NullableTest {
     @Test
     fun questionMark() {
 
-        //replace TODO with a value to make the test pass
-        val x: Int? = TODO()
+        //change the value to make the test pass
+        val x: Int? = 7
 
         val y = x?.plus(5)
 
@@ -50,7 +50,23 @@ class NullableTest {
         val b = ""
 
         assert(a.orEmpty()).isEqualTo(b)
+    }
+
+    @Test
+    fun middleName() {
+
+        fun name(first: String, middle: String?, surname: String){
+            TODO()
+        }
+        assert(name("James", "Tiberius", "Kirk")).isEqualTo("James T. Kirk")
+        assert(name("John", null, "Doe")).isEqualTo("John Doe")
 
     }
+
+
+//    let
+//    apply
+//    elvis
+    // concat ?.?.
 
 }

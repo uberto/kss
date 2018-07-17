@@ -35,21 +35,11 @@ class FunTest {
 
 
 
-    @Test
-    fun valOrVar(){
-
-        var iCanChange = 5
-
-        val iCannotChange = "42".toInt()
-
-        //add something here to make it pass
-
-        assert(iCanChange).isEqualTo(iCannotChange)
-
-    }
 
     @Test
     fun createJavaObject(){
+
+        //replace TODO with a value to make the test pass
 
         val now: java.util.Date = TODO()
 
@@ -60,15 +50,16 @@ class FunTest {
     @Test
     fun defaultParameter(){
 
-        fun answer(x: Int){
+        // fix it to make test pass
+        fun answer(x: Int = 37){
             x.toString()
         }
 
 
         assert(answer(12)).isEqualTo("12")
 
-//uncomment and make it work
-//        assert(answer()).isEqualTo("42")
+
+        assert(answer()).isEqualTo("42")
 
     }
 
@@ -85,5 +76,22 @@ class FunTest {
     }
 
 
+    @Test
+    fun spreadAndVarArgs(){
+
+        fun myConcat(vararg xs: String): String{
+
+            return xs.joinToString()
+
+        }
+
+        val nums = arrayOf("1","2","3")
+
+        val result = myConcat(*nums)
+
+        val result2 = myConcat() //choose correct arguments
+
+        assert(result).isEqualTo(result2)
+    }
 
 }
