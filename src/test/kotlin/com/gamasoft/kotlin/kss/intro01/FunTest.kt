@@ -33,8 +33,15 @@ class FunTest {
     }
 
 
+    @Test
+    fun singleStatementFunDeclaration(){
 
+        //replace TODO with a value to make the test pass
+        fun double(x: Int): Int = TODO()
 
+        assert(double(5)).isEqualTo(10)
+
+    }
 
     @Test
     fun createJavaObject(){
@@ -55,13 +62,11 @@ class FunTest {
             x.toString()
         }
 
-
         assert(answer(12)).isEqualTo("12")
-
-
         assert(answer()).isEqualTo("42")
 
     }
+
 
 
     @Test
@@ -74,6 +79,7 @@ class FunTest {
         assert(pitagora(leg = 4.0, hypotenuse = 5.0)).isEqualTo(3.0)
 
     }
+
 
 
     @Test
