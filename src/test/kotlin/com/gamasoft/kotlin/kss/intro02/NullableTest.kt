@@ -70,7 +70,7 @@ class NullableTest {
     fun safeCalls() {
 
         //fix parameters to make test pass
-        fun triple(x: Int?) = x?.times(3)
+        fun triple(x: Int?) = x?.times(5)
 
         assert(triple(null)).isEqualTo(null)
         assert(triple(4)).isEqualTo(12)
