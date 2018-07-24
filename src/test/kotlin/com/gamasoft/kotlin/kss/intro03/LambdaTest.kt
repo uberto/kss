@@ -50,8 +50,33 @@ class LambdaTest {
 
     }
 
+    @Test
+    fun lambdaType(){
 
-    //type
-    //HOF
+        val myLambda: (Int) -> String
+
+        //replace todo with an actual lambda and pass the test
+        myLambda = TODO()
+
+        assert(myLambda(4)).isEqualTo("value of x is 4")
+
+    }
+
+
+    @Test
+    fun higherOrderFunctions(){
+
+        val combine: ((Int) -> Int, (Int) -> Int) -> ((Int) -> Int)
+
+        val square: (Int) -> Int = {it * it}
+        val double: (Int) -> Int = {x -> x * 2 + 1}
+
+        //replace todo with an actual lambda and pass the test
+        combine = TODO()
+        val doubleSquarePlusOne = combine(square, double)
+
+        assert(doubleSquarePlusOne(5)).isEqualTo(51)
+
+    }
 
 }
