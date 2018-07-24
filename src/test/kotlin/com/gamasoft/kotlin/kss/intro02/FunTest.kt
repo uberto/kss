@@ -1,11 +1,9 @@
-package com.gamasoft.kotlin.kss.intro01
+package com.gamasoft.kotlin.kss.intro02
 
 import assertk.assert
 import assertk.assertions.isEqualTo
-import assertk.assertions.isInstanceOf
 import assertk.assertions.isNotNull
 import org.junit.jupiter.api.Test
-import java.util.*
 
 class FunTest {
 

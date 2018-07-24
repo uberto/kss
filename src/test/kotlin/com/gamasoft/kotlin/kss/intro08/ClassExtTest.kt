@@ -1,4 +1,4 @@
-package com.gamasoft.kotlin.kss.intro06
+package com.gamasoft.kotlin.kss.intro08
 
 class ClassExtTest {
 

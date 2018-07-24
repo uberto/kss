@@ -1,4 +1,4 @@
-package com.gamasoft.kotlin.kss.intro05
+package com.gamasoft.kotlin.kss.intro07
 
 class ObjectsTest {
 
