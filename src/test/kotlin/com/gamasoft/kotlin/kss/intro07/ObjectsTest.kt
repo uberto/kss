@@ -5,5 +5,6 @@ class ObjectsTest {
     //companion object
     //objects as enum (sealed)
     //object as singleton
+    //selased as enum
 
 }
