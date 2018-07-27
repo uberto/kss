@@ -62,6 +62,16 @@ class LambdaTest {
 
     }
 
+    @Test
+    fun functionAsReturnValue(){
+
+        //fix the code to pass the test
+        fun plusFactory(x: Int): (Int) -> Int = { y -> x - y }
+
+        val plus3 = plusFactory(3)
+        assert (plus3(4)).isEqualTo(7)
+
+    }
 
     @Test
     fun higherOrderFunctions(){

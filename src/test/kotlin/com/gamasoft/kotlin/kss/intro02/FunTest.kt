@@ -98,4 +98,5 @@ class FunTest {
         assert(result).isEqualTo(result2)
     }
 
+
 }
