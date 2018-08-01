@@ -17,19 +17,6 @@ class NullableTest {
 
     }
 
-    @Test
-    fun operations() {
-
-        val x: Int? = 5
-
-        var y = 7
-
-        // uncomment and change x type to make test pass
-//        val y += x
-
-        assert(y).isEqualTo(12)
-
-    }
 
     @Test
     fun questionMark() {

@@ -1,9 +1,7 @@
 package com.gamasoft.kotlin.kss.intro01
 
 import assertk.assert
-import assertk.assertions.containsExactly
-import assertk.assertions.isEqualTo
-import assertk.assertions.isTrue
+import assertk.assertions.*
 import org.junit.jupiter.api.Test
 
 class BasicTypesTest {
@@ -63,6 +61,7 @@ class BasicTypesTest {
 
     }
 
+
     @Test
     fun rangeNum(){
 
@@ -100,8 +99,69 @@ class BasicTypesTest {
 
         val odds2 = (1 .. 10 step 2).toList().toTypedArray()
 
-        assert(odds).containsExactly(odds2)
+        assert(odds).containsExactly(*odds2)
     }
 
+
+    @Test
+    fun mutableList(){
+
+        val myList: MutableList<Int> = mutableListOf()
+        (1 .. 10).forEach{ myList.add(it) }
+
+        assert(myList).hasSize(42)
+
+    }
+
+
+    @Test
+    fun immutableList(){
+
+        val myList = (1 .. 10).toList()
+
+        var myList2 = listOf(1,2,3,4)
+
+        //add something to myList2 to make the test pass
+
+
+
+        assert(myList).containsAll(*myList2.toTypedArray())
+
+    }
+
+
+    @Test
+    fun listPlusOperator(){
+
+        val nums = ('1' .. '9').toList()
+
+        val chars = ('a'..'z').toList()
+
+        val all = nums + chars
+
+        assert(all).containsAll('a', 'z', '0', '9')
+    }
+
+    @Test
+    fun listMinusOperator(){
+
+        val chars = ('a'..'z').toList()
+        val vowels = listOf('a', 'e', 'u')
+
+        val consonants = chars - vowels
+
+        assert(consonants).containsAll('b', 'k', 'z')
+        assert(consonants).containsNone('a', 'e', 'i', 'o', 'u')
+    }
+
+    @Test
+    fun joinString(){
+
+        val names = listOf("John", "Horton", "Conway")
+        val fullName: String = TODO()
+
+        assert(fullName).isEqualTo("John Horton Conway")
+
+    }
 
 }

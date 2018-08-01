@@ -6,52 +6,6 @@ import org.junit.jupiter.api.Test
 
 class CollectionsTest {
 
-    @Test
-    fun mutableList(){
-
-        val myList: MutableList<Int> = mutableListOf()
-        (1 .. 10).forEach{ myList.add(it) }
-
-        assert(myList).hasSize(42)
-
-    }
-
-
-    @Test
-    fun immutableList(){
-
-        val myList = (1 .. 10).toList()
-
-        val myList2 = listOf(1,2,3,4)
-
-        assert(myList).containsAll(myList2)
-
-    }
-
-
-    @Test
-    fun listPlusOperator(){
-
-        val nums = ('1' .. '9').toList()
-
-        val chars = ('a'..'z').toList()
-
-        val all = nums + chars
-
-        assert(all).containsAll('a', 'z', '0', '9')
-    }
-
-    @Test
-    fun listMinusOperator(){
-
-        val chars = ('a'..'z').toList()
-        val vowels = listOf('a', 'e', 'u')
-
-        val consonants = chars - vowels
-
-        assert(consonants).containsAll('b', 'k', 'z')
-        assert(consonants).containsNone('a', 'e', 'i', 'o', 'u')
-    }
 
     @Test
     fun mapOperators(){
@@ -128,14 +82,23 @@ class CollectionsTest {
     @Test
     fun sequenceAndTake() {
 
+        val list = fibonacciNumbers().take(10).toList()
+        assert(list).isEqualTo(listOf(1, 2, 3, 5, 8, 13, 21, 34, 55, 89))
+
+        val seq = fibonacciNumbers().take(4)
+        assert(seq.last()).isEqualTo(5)
+
+    }
+
+    private fun fibonacciNumbers(): Sequence<Int> {
+
         var num = 1
-        var prevNum = 1
-        val fibonacci = generateSequence {
-            num + prevNum
+        var prevNum = 0
+
+        return generateSequence {
+             TODO()
+            //modify num and prevNum and then return the next fibonacci number in the sequence
         }
-
-        assert(fibonacci.take(10).last()).isEqualTo(144)
-
     }
 
 }
