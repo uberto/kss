@@ -62,16 +62,30 @@ class LambdaTest {
 
     }
 
+
+    @Test
+    fun functionAsParam(){
+        //fix the code to pass the test
+        fun applyFun(x: String, f: (String) -> String): String = TODO()
+
+        assert (applyFun("Abc"){it + it}).isEqualTo("AbcAbc")
+        assert (applyFun("Zack"){it.toLowerCase()}).isEqualTo("zack")
+
+    }
+
+
     @Test
     fun functionAsReturnValue(){
 
         //fix the code to pass the test
-        fun plusFactory(x: Int): (Int) -> Int = { y -> x - y }
+        fun plusFactory(x: Int): (Int) -> Int = TODO()
 
         val plus3 = plusFactory(3)
         assert (plus3(4)).isEqualTo(7)
 
     }
+
+
 
     @Test
     fun higherOrderFunctions(){

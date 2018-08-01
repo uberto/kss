@@ -123,9 +123,7 @@ class BasicTypesTest {
 
         //add something to myList2 to make the test pass
 
-
-
-        assert(myList).containsAll(*myList2.toTypedArray())
+        assert(myList).containsExactly(*myList2.toTypedArray())
 
     }
 

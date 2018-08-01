@@ -98,10 +98,15 @@ class AdvancedFunTest {
     @Test
     fun reifiedGeneric(){
 
-        val s1 = getOrDefault("abc")
+        val s1 = getOrDefault(" ") //find the value to make test pass
         val s2 = getOrDefault<String>(null)
 
         assert(s1).isEqualTo(s2)
+
+        val d1 = getOrDefault(Date(0)) //find the value to make test pass
+        val d2 = getOrDefault<Date>(null)
+
+        assert(d1.toString()).isEqualTo(d2.toString())
 
     }
 

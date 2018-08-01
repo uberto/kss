@@ -17,6 +17,15 @@ class FunTest {
     }
 
     @Test
+    fun singleStatementFunctionsDontNeedReturn(){
+
+        //replace TODO with a value to make the test pass
+        fun myfun(): String = TODO()
+
+        assert(myfun()).isEqualTo("Kotlin is Fun")
+    }
+
+    @Test
     fun nestedFun(){
 
         //replace TODO with a value to make the test pass

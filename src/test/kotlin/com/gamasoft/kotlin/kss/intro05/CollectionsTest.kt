@@ -21,6 +21,20 @@ class CollectionsTest {
         assert(all.keys).doesNotContain("toy car")
     }
 
+    fun palindrome(s: String): String {
+        TODO()
+    }
+
+    @Test
+    fun namedFunctionAsParam(){
+
+        val words = "It was a dark and stormy night".split(" ")
+        assert (words.map (::palindrome).joinToString())
+                .isEqualTo("IttI, wassaw, aa, darkkrad, anddna, stormyymrots, nightthgin")
+
+    }
+
+
     @Test
     fun sumOfEvenNumbers(){
 

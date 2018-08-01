@@ -41,17 +41,31 @@ class ObjectsTest {
 
     }
 
+    //Algebraic Data Type
     sealed class TreeNode{
-        object Root: TreeNode()
-        data class Node(val parent: TreeNode, val value: Int): TreeNode()
+        object Root: TreeNode()  //root of the tree has no parent
+        data class Leaf(val parent: TreeNode, val value: Int): TreeNode()
     }
 
     @Test
-    fun navigateAndBuildTree(){
-        val n1 = TreeNode.Node(TreeNode.Root, 3)
-        val n2 = TreeNode.Node(n1, 4)
-        val n3 = TreeNode.Node(n1, 5)
-        val n4 = TreeNode.Node(n2, 6)
+    fun nodeTree(){
+        fun desc(node: TreeNode): String =
+        when (node){
+            is TreeNode.Root -> TODO()
+            is TreeNode.Leaf -> TODO()
+        }
+
+        assert(desc(TreeNode.Root)).isEqualTo("root")
+        assert(desc(TreeNode.Leaf(TreeNode.Root, 42))).isEqualTo("leaf 42")
+    }
+
+
+    @Test
+    fun navigateTree(){
+        val n1 = TreeNode.Leaf(TreeNode.Root, 3)
+        val n2 = TreeNode.Leaf(n1, 4)
+        val n3 = TreeNode.Leaf(n1, 5)
+        val n4 = TreeNode.Leaf(n2, 6)
 
         fun sumToRoot(node: TreeNode): Int = TODO() //return the sum of values of all parents from node to root
 
@@ -60,12 +74,14 @@ class ObjectsTest {
 
     }
 
-    object MyCache: HashMap<String, String>()
+    //object can be used as a singleton
+    object MyCache: HashMap<String, Int>()
 
 
     @Test
     fun objectAsSingleton(){
 
+        //assign some values to the cache to pass the test
         TODO()
 
         assert(MyCache["ten"]).isEqualTo(10)

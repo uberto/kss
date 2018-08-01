@@ -5,23 +5,29 @@ import assertk.assertions.hasSize
 import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
 
+data class Person(val name: String, val age: Int)
+
+data class Point(val x: Int, val y: Int) {
+    val dist: Double
+    init {
+        dist = Math.sqrt ((x*x + y*y).toDouble())
+    }
+
+    operator fun plus(other: Point):Point = TODO()
+}
+
+
+sealed class FinancialInstrument(val name: String)
+    data class Option(val underlying: String, val type: String) : FinancialInstrument("Option")
+    data class Future(val underlying: String, val expiry: Int) : FinancialInstrument("Future")
+    data class EquitySwap(val underlying: String) : FinancialInstrument("TRS")
+
+
+typealias FinancialFun =(String) -> FinancialInstrument
+
+
 class DataClassTest {
 
-    data class Person(val name: String, val age: Int)
-
-    data class Point(val x: Int, val y: Int) {
-        val dist: Double
-        init {
-            dist = Math.sqrt ((x*x + y*y).toDouble())
-        }
-    }
-
-
-    sealed class FinancialInstrument(val name: String) {
-        data class Option(val underlying: String, val type: String) : FinancialInstrument("Option")
-        data class Future(val underlying: String, val expiry: Int) : FinancialInstrument("Future")
-        data class EquitySwap(val underlying: String) : FinancialInstrument("TRS")
-    }
 
     @Test
     fun aSimpleDataClass(){
@@ -62,8 +68,7 @@ class DataClassTest {
 
 
     @Test
-    fun destructor(){
-
+    fun destructorInLambdas(){
 
         val people = listOf(
                 Person("joe", 24),
@@ -78,6 +83,16 @@ class DataClassTest {
         assert (profiles[2]).isEqualTo("mary: 26")
     }
 
+    @Test
+    fun destructorInReturn(){
+
+        fun middlePoint(p1: Point, p2: Point):Point = TODO()
+
+        val (x, y) = middlePoint(Point(4, 7), Point(6, 9))
+
+        assert (x).isEqualTo(5)
+        assert (y).isEqualTo(8)
+    }
 
     @Test
     fun dataClassSealed(){
@@ -86,24 +101,10 @@ class DataClassTest {
             TODO()
         }
 
-        assert (getName(FinancialInstrument.Option("VOD.L", "Call"))).isEqualTo("Option")
-        assert (getName(FinancialInstrument.Future("BT.L", 60))).isEqualTo("Future")
+        assert (getName(Option("VOD.L", "Call"))).isEqualTo("Option")
+        assert (getName(Future("BT.L", 60))).isEqualTo("Future")
     }
 
-
-
-    @Test
-    fun whenAndSealedClasses(){
-
-        fun fullDescription(instr: FinancialInstrument): String = when (instr) {
-            is FinancialInstrument.Option -> TODO()
-            is FinancialInstrument.Future -> TODO()
-            is FinancialInstrument.EquitySwap -> TODO()
-        }
-
-        assert (fullDescription(FinancialInstrument.Option("VOD.L", "Call"))).isEqualTo("Option Call VOD.L")
-        assert (fullDescription(FinancialInstrument.Future("BT.L", 60))).isEqualTo("Future 60 days BT.L")
-    }
 
     @Test
     fun returnAsTuple(){
@@ -117,5 +118,45 @@ class DataClassTest {
 
     }
 
+
+    @Test
+    fun operatorOverloading(){
+
+        //implement the operator function plus of Point to pass the test
+        val p1 = Point(2,3)
+        val p2 = Point(5,9)
+
+        val p3 = p1 + p2
+
+        assert(p3).isEqualTo(Point(1,1))
+
+    }
+
+    @Test
+    fun whenAndSealedClasses(){
+
+        fun fullDescription(instr: FinancialInstrument): String = when (instr) {
+            is Option -> TODO()
+            is Future -> TODO()
+            is EquitySwap -> TODO()
+        }
+
+        assert (fullDescription(Option("VOD.L", "Call"))).isEqualTo("Option Call VOD.L")
+        assert (fullDescription(Future("BT.L", 60))).isEqualTo("Future 60 days BT.L")
+    }
+
+
+    @Test
+    fun typeAlias(){
+        //FinancialFun is a typealias defined on top
+
+        val futureSixtyDaysFactory: FinancialFun = TODO()
+        val callOptionFactory: FinancialFun = TODO()
+
+        fun instr(f: FinancialFun, stock: String): FinancialInstrument = TODO()
+
+        assert (instr(futureSixtyDaysFactory, "IBM.N")).isEqualTo(Future("IBM.N", 60))
+        assert (instr(callOptionFactory, "AAPL.OQ")).isEqualTo(Option("AAPL.OQ", "Call"))
+    }
 
 }
