@@ -15,9 +15,9 @@ class LambdaTest {
         val myKfun3 = {s:String -> "k$s" }
 
 
-        assert(myKfun1("hello")).isEqualTo("khello")
-        assert(myKfun2("hello")).isEqualTo("khello")
-        assert(myKfun3("hello")).isEqualTo("khello")
+        assertThat(myKfun1("hello")).isEqualTo("khello")
+        assertThat(myKfun2("hello")).isEqualTo("khello")
+        assertThat(myKfun3("hello")).isEqualTo("khello")
 
     }
 
@@ -38,7 +38,7 @@ class LambdaTest {
     fun itIsTheParam(){
 
         // fix it to make test pass
-        val duplicate: (String) -> String = {it + it}
+        val duplicate: (String) -> String = {it + "a"}
 
         assertThat(duplicate("a")).isEqualTo("aa")
         assertThat(duplicate("b")).isEqualTo("bb")
@@ -51,7 +51,7 @@ class LambdaTest {
         // fix it to make test pass
         fun addProps(properties: Properties?) =
             properties?.apply {
-                put("name", "Frank")
+                put("name", "John")
                 put("age", 32)
                 put("city", "London")
             }
@@ -71,7 +71,7 @@ class LambdaTest {
         val myLambda: (Int) -> String
 
         //replace todo with an actual lambda and pass the test
-        myLambda = {"value of x is $it"}
+        myLambda = TODO()
 
         assertThat(myLambda(4)).isEqualTo("value of x is 4")
 
@@ -81,7 +81,7 @@ class LambdaTest {
     @Test
     fun functionAsParam(){
         //fix the code to pass the test
-        fun applyFun(x: String, f: (String) -> String): String = f(x)
+        fun applyFun(x: String, f: (String) -> String): String = TODO()
 
         assertThat(applyFun("Abc"){it + it}).isEqualTo("AbcAbc")
         assertThat(applyFun("Zack"){it.toLowerCase()}).isEqualTo("zack")
@@ -93,7 +93,7 @@ class LambdaTest {
     fun functionAsReturnValue(){
 
         //fix the code to pass the test
-        fun plusFactory(x: Int): (Int) -> Int = {y -> x + y}
+        fun plusFactory(x: Int): (Int) -> Int = TODO()
 
         val plus3 = plusFactory(3)
         assertThat(plus3(4)).isEqualTo(7)
@@ -111,7 +111,7 @@ class LambdaTest {
         val double: (Int) -> Int = {x -> x * 2 + 1}
 
         //replace todo with an actual lambda and pass the test
-        combine = {f,g -> {g(f(it))} }
+        combine = TODO()
         val doubleSquarePlusOne = combine(square, double)
 
         assertThat(doubleSquarePlusOne(5)).isEqualTo(51)
