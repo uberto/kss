@@ -8,10 +8,25 @@ import java.util.*
 class LambdaTest {
 
     @Test
+    fun kfunInThreeWays(){
+        //fix the functions to return 'k' + input string
+        fun myKfun1(s: String) = "k$s"
+        fun myKfun2(s: String): String { return "k$s" }
+        val myKfun3 = {s:String -> "k$s" }
+
+
+        assert(myKfun1("hello")).isEqualTo("khello")
+        assert(myKfun2("hello")).isEqualTo("khello")
+        assert(myKfun3("hello")).isEqualTo("khello")
+
+    }
+
+
+    @Test
     fun simpleLambda(){
 
         // fix it to make test pass
-        val tens = Array<Int>(10){ x -> x*10}
+        val tens = Array(10){ x -> (x*10).toString()}
 
 
         assert(tens[3]).isEqualTo("30")

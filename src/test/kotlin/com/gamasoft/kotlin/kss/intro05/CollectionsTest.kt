@@ -13,7 +13,7 @@ class CollectionsTest {
         val pricesShop1 = mapOf("toy car" to 10, "cards" to 5, "candy" to 2)
         val pricesShop2 = mapOf("toy car" to 12, "teddy bear" to 8, "book" to 6)
 
-        val notToBuy = "book"
+        val notToBuy = "toy car"
         val all = pricesShop1 + pricesShop2 - notToBuy
 
         assert(all).contains("cards", 5)
@@ -21,9 +21,7 @@ class CollectionsTest {
         assert(all.keys).doesNotContain("toy car")
     }
 
-    fun palindrome(s: String): String {
-        TODO()
-    }
+    fun palindrome(s: String) = s + s.reversed()
 
     @Test
     fun namedFunctionAsParam(){
@@ -38,7 +36,7 @@ class CollectionsTest {
     @Test
     fun sumOfEvenNumbers(){
 
-        val total = (1 .. 20).toList().filter { it % 3 == 0 } .sum()
+        val total = (1 .. 20).toList().filter { it % 2 == 0 } .sum()
 
         assert(total).isEqualTo(110)
     }
@@ -46,7 +44,7 @@ class CollectionsTest {
     @Test
     fun mapOverCollection(){
 
-        val square: (Int) -> Int = { it + it }
+        val square: (Int) -> Int = { it * it }
         val total = (1 .. 24).toList()
                 .map (square)
                 .sum()
@@ -59,7 +57,7 @@ class CollectionsTest {
     fun foldOverCollection(){
 
         val factor = (1 .. 10).toList()
-                .fold (1) { a, x -> TODO()}
+                .fold (1) { a, x -> a * x}
 
         assert(factor).isEqualTo(3628800)
     }
@@ -70,7 +68,7 @@ class CollectionsTest {
 
         val word = "Hello World".toList()
         val factor = word
-                .fold ("") { a, c -> TODO() }
+                .fold ("") { a, c -> c + a }
 
         assert(factor).isEqualTo("dlroW olleH")
     }
@@ -82,7 +80,7 @@ class CollectionsTest {
 
         val words = listOf("Hello".toList(), "World".toList(), "Kotlin".toList())
 
-        val transform: (List<Char>) -> List<Char> = TODO()
+        val transform: (List<Char>) -> List<Char> = {it}
 
         val charsList = words
                 .flatMap(transform)
@@ -91,6 +89,20 @@ class CollectionsTest {
                 .groupingBy{ it }
                 .eachCount()
         assert(charsList.get('l')).isEqualTo(4)
+    }
+
+    private fun fibonacciNumbers(): Sequence<Int> {
+
+        var num = 1
+        var prevNum = 0
+
+        return generateSequence {
+            //modify num and prevNum and then return the next fibonacci number in the sequence
+            val nn = num + prevNum
+            prevNum = num
+            num = nn
+            num
+        }
     }
 
     @Test
@@ -102,17 +114,6 @@ class CollectionsTest {
         val seq = fibonacciNumbers().take(4)
         assert(seq.last()).isEqualTo(5)
 
-    }
-
-    private fun fibonacciNumbers(): Sequence<Int> {
-
-        var num = 1
-        var prevNum = 0
-
-        return generateSequence {
-             TODO()
-            //modify num and prevNum and then return the next fibonacci number in the sequence
-        }
     }
 
 }

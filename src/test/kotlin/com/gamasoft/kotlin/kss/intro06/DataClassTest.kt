@@ -32,6 +32,7 @@ class DataClassTest {
     @Test
     fun aSimpleDataClass(){
 
+        //change people data to make the test pass
         val people = listOf(
                 Person("joe", 42),
                 Person("anne", 42),

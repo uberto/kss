@@ -14,6 +14,7 @@ class BasicTypesTest {
 
         val iCannotChange = "42".toInt()
 
+        iCanChange = 42
         //add something here to make it pass
 
         assert(iCanChange).isEqualTo(iCannotChange)
@@ -29,6 +30,7 @@ class BasicTypesTest {
             line 1
             line 2
             line 3
+            line 4
         """.trimIndent()
 
         assert(multiline.lines().size).isEqualTo(4)
@@ -39,7 +41,7 @@ class BasicTypesTest {
     fun templateString(){
 
         //change string to pass the test
-        val mid = "123"
+        val mid = "b c"
         val letters = "a $mid d".trimIndent()
 
         assert(letters).isEqualTo("a b c d")
@@ -54,7 +56,7 @@ class BasicTypesTest {
         var strip = ""
         for (c in str) {
             //fix the range to pass the test
-            strip += if (c in 'a'..'a') c else '_'
+            strip += if (c in 'a'..'z') c else '_'
         }
 
         assert(strip).isEqualTo("hello___")
@@ -68,7 +70,7 @@ class BasicTypesTest {
         var tot = 0
 
         //find the right range
-        for (x in 1 .. 10) {
+        for (x in 1 .. 24) {
             tot += x * x
         }
 
@@ -83,7 +85,7 @@ class BasicTypesTest {
             var rev = ""
             //find the right range
             for (i in s.length.downTo(1)) {
-                rev += s[i]
+                rev += s[i - 1]
             }
             return rev
         }
@@ -95,7 +97,7 @@ class BasicTypesTest {
     @Test
     fun arrays(){
         // fix the arguments to make test pass
-        val odds: Array<Int> = arrayOf(1,2,3)
+        val odds: Array<Int> = arrayOf(1,3,5,7,9)
 
         val odds2 = (1 .. 10 step 2).toList().toTypedArray()
 
@@ -107,7 +109,7 @@ class BasicTypesTest {
     fun mutableList(){
 
         val myList: MutableList<Int> = mutableListOf()
-        (1 .. 10).forEach{ myList.add(it) }
+        (1 .. 42).forEach{ myList.add(it) }
 
         assert(myList).hasSize(42)
 
@@ -121,6 +123,7 @@ class BasicTypesTest {
 
         var myList2 = listOf(1,2,3,4)
 
+        myList2 += listOf(5,6,7,8,9,10)
         //add something to myList2 to make the test pass
 
         assert(myList).containsExactly(*myList2.toTypedArray())
@@ -131,7 +134,7 @@ class BasicTypesTest {
     @Test
     fun listPlusOperator(){
 
-        val nums = ('1' .. '9').toList()
+        val nums = ('0' .. '9').toList()
 
         val chars = ('a'..'z').toList()
 
@@ -144,7 +147,7 @@ class BasicTypesTest {
     fun listMinusOperator(){
 
         val chars = ('a'..'z').toList()
-        val vowels = listOf('a', 'e', 'u')
+        val vowels = listOf('a', 'e', 'i', 'o', 'u')
 
         val consonants = chars - vowels
 
@@ -156,7 +159,7 @@ class BasicTypesTest {
     fun joinString(){
 
         val names = listOf("John", "Horton", "Conway")
-        val fullName: String = TODO()
+        val fullName: String = names.joinToString(" ")
 
         assert(fullName).isEqualTo("John Horton Conway")
 
