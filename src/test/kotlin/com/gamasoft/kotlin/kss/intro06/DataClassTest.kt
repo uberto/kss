@@ -13,7 +13,7 @@ data class Point(val x: Int, val y: Int) {
         dist = Math.sqrt ((x*x + y*y).toDouble())
     }
 
-    operator fun plus(other: Point):Point = TODO()
+    operator fun plus(other: Point):Point = Point(x+other.x, y + other.y)
 }
 
 
@@ -35,7 +35,7 @@ class DataClassTest {
         //change people data to make the test pass
         val people = listOf(
                 Person("joe", 42),
-                Person("anne", 42),
+                Person("anne", 28),
                 Person("mary", 42))
 
         val under30 = people.filter { it.age < 30 }
@@ -49,9 +49,9 @@ class DataClassTest {
 
         val joey = Person("joey", 25)
 
-//        joe.name = "joe" doesn't compile
+//        joey.name = "joe" doesn't compile
 
-        val joe = joey.copy(name = "joe")
+        val joe = joey.copy(name = "joe", age = 27)
 
         assert (joe.name).isEqualTo("joe")
         assert (joe.age).isEqualTo(27)
@@ -61,7 +61,7 @@ class DataClassTest {
     fun dataClassInitialized(){
 
         val p1 = Point(3, 4)
-        val p2 = Point(6, -7)
+        val p2 = Point(6, 8)
 
         assert (p1.dist).isEqualTo(5.0)
         assert (p2.dist).isEqualTo(10.0)
@@ -77,7 +77,7 @@ class DataClassTest {
                 Person("mary", 26))
 
 
-        val profiles= people.map { (name, age) -> name +age }
+        val profiles= people.map { (name, age) -> "$name: $age" }
 
         assert (profiles[0]).isEqualTo("joe: 24")
         assert (profiles[1]).isEqualTo("anne: 25")
@@ -87,7 +87,7 @@ class DataClassTest {
     @Test
     fun destructorInReturn(){
 
-        fun middlePoint(p1: Point, p2: Point):Point = TODO()
+        fun middlePoint(p1: Point, p2: Point):Point = Point((p1.x + p2.x) / 2, (p1.y + p2.y) / 2)
 
         val (x, y) = middlePoint(Point(4, 7), Point(6, 9))
 
@@ -99,7 +99,7 @@ class DataClassTest {
     fun dataClassSealed(){
 
         fun getName(instr: FinancialInstrument): String {
-            TODO()
+            return instr.name
         }
 
         assert (getName(Option("VOD.L", "Call"))).isEqualTo("Option")
@@ -110,7 +110,10 @@ class DataClassTest {
     @Test
     fun returnAsTuple(){
 
-        fun splitDate(date: String): Triple<Int, Int, Int> = TODO()
+        fun splitDate(date: String): Triple<Int, Int, Int> {
+            val parts = date.split("/").map { it.toInt() }
+            return Triple(parts[0], parts[1], parts[2])
+        }
 
         val (day, month, year) = splitDate("12/05/2018")
         assert(day).isEqualTo(12)
@@ -129,7 +132,7 @@ class DataClassTest {
 
         val p3 = p1 + p2
 
-        assert(p3).isEqualTo(Point(1,1))
+        assert(p3).isEqualTo(Point(7,12))
 
     }
 
@@ -137,9 +140,9 @@ class DataClassTest {
     fun whenAndSealedClasses(){
 
         fun fullDescription(instr: FinancialInstrument): String = when (instr) {
-            is Option -> TODO()
-            is Future -> TODO()
-            is EquitySwap -> TODO()
+            is Option -> "${instr.name} ${instr.type} ${instr.underlying}"
+            is Future -> "${instr.name} ${instr.expiry} days ${instr.underlying}"
+            is EquitySwap -> "${instr.name} ${instr.underlying}"
         }
 
         assert (fullDescription(Option("VOD.L", "Call"))).isEqualTo("Option Call VOD.L")
@@ -151,10 +154,10 @@ class DataClassTest {
     fun typeAlias(){
         //FinancialFun is a typealias defined on top
 
-        val futureSixtyDaysFactory: FinancialFun = TODO()
-        val callOptionFactory: FinancialFun = TODO()
+        val futureSixtyDaysFactory: FinancialFun = {Future(it, 60)}
+        val callOptionFactory: FinancialFun = {Option(it, "Call")}
 
-        fun instr(f: FinancialFun, stock: String): FinancialInstrument = TODO()
+        fun instr(f: FinancialFun, stock: String): FinancialInstrument = f(stock)
 
         assert (instr(futureSixtyDaysFactory, "IBM.N")).isEqualTo(Future("IBM.N", 60))
         assert (instr(callOptionFactory, "AAPL.OQ")).isEqualTo(Option("AAPL.OQ", "Call"))

@@ -40,6 +40,9 @@ compileTestKotlin {
 }
 
 test {
-//    useJUnitPlatform()
+
+    useJUnitPlatform{
+        includeEngines 'junit-jupiter'
+    }
     testLogging
 }

@@ -38,7 +38,7 @@ class LambdaTest {
     fun itIsTheParam(){
 
         // fix it to make test pass
-        val duplicate: (String) -> String = {it + "a"}
+        val duplicate: (String) -> String = {it + it}
 
         assert(duplicate("a")).isEqualTo("aa")
         assert(duplicate("b")).isEqualTo("bb")
@@ -51,7 +51,7 @@ class LambdaTest {
         // fix it to make test pass
         fun addProps(properties: Properties?) =
             properties?.apply {
-                put("name", "John")
+                put("name", "Frank")
                 put("age", 32)
                 put("city", "London")
             }
@@ -71,7 +71,7 @@ class LambdaTest {
         val myLambda: (Int) -> String
 
         //replace todo with an actual lambda and pass the test
-        myLambda = TODO()
+        myLambda = {"value of x is $it"}
 
         assert(myLambda(4)).isEqualTo("value of x is 4")
 
@@ -81,7 +81,7 @@ class LambdaTest {
     @Test
     fun functionAsParam(){
         //fix the code to pass the test
-        fun applyFun(x: String, f: (String) -> String): String = TODO()
+        fun applyFun(x: String, f: (String) -> String): String = f(x)
 
         assert (applyFun("Abc"){it + it}).isEqualTo("AbcAbc")
         assert (applyFun("Zack"){it.toLowerCase()}).isEqualTo("zack")
@@ -93,7 +93,7 @@ class LambdaTest {
     fun functionAsReturnValue(){
 
         //fix the code to pass the test
-        fun plusFactory(x: Int): (Int) -> Int = TODO()
+        fun plusFactory(x: Int): (Int) -> Int = {y -> x + y}
 
         val plus3 = plusFactory(3)
         assert (plus3(4)).isEqualTo(7)
@@ -111,7 +111,7 @@ class LambdaTest {
         val double: (Int) -> Int = {x -> x * 2 + 1}
 
         //replace todo with an actual lambda and pass the test
-        combine = TODO()
+        combine = {f,g -> {g(f(it))} }
         val doubleSquarePlusOne = combine(square, double)
 
         assert(doubleSquarePlusOne(5)).isEqualTo(51)
