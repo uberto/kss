@@ -18,10 +18,6 @@ https://medium.com/@ramtop/have-fun-and-learn-kotlin-25daa2e366c0
 Any feedback is welcome.
 
 
-**TODO**
+# Solutions:
 
-Putting all the solutions in a separate branch
-
-Coroutines tests
-
-Functional programming tests
+You can see mine solution in the branch solutions

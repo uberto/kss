@@ -1,4 +1,4 @@
-package com.gamasoft.kotlin.kss.functionalKatas
+package com.ubertob.kotlin.kss.functionalKatas
 
 import assertk.assert
 import assertk.assertions.isEqualTo
