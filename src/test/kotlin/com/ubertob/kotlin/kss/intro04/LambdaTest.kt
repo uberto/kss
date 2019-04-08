@@ -1,6 +1,7 @@
 package com.ubertob.kotlin.kss.intro04
 
 import assertk.assert
+import assertk.assertThat
 import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
 import java.util.*
@@ -29,8 +30,8 @@ class LambdaTest {
         val tens = Array(10){ x -> (x*10).toString()}
 
 
-        assert(tens[3]).isEqualTo("30")
-        assert(tens[0]).isEqualTo("0")
+        assertThat(tens[3]).isEqualTo("30")
+        assertThat(tens[0]).isEqualTo("0")
 
     }
 
@@ -40,8 +41,8 @@ class LambdaTest {
         // fix it to make test pass
         val duplicate: (String) -> String = {it + it}
 
-        assert(duplicate("a")).isEqualTo("aa")
-        assert(duplicate("b")).isEqualTo("bb")
+        assertThat(duplicate("a")).isEqualTo("aa")
+        assertThat(duplicate("b")).isEqualTo("bb")
 
     }
 
@@ -59,9 +60,9 @@ class LambdaTest {
         val pr = addProps(Properties())
         val pn = addProps(null)
 
-        assert(pr?.getProperty("name")).isEqualTo("Frank")
-        assert(pr?.getProperty("surname").orEmpty()).isEqualTo("")
-        assert(pn?.getProperty("name").orEmpty()).isEqualTo("")
+        assertThat(pr?.getProperty("name")).isEqualTo("Frank")
+        assertThat(pr?.getProperty("surname").orEmpty()).isEqualTo("")
+        assertThat(pn?.getProperty("name").orEmpty()).isEqualTo("")
 
     }
 
@@ -73,7 +74,7 @@ class LambdaTest {
         //replace todo with an actual lambda and pass the test
         myLambda = {"value of x is $it"}
 
-        assert(myLambda(4)).isEqualTo("value of x is 4")
+        assertThat(myLambda(4)).isEqualTo("value of x is 4")
 
     }
 
@@ -83,8 +84,8 @@ class LambdaTest {
         //fix the code to pass the test
         fun applyFun(x: String, f: (String) -> String): String = f(x)
 
-        assert (applyFun("Abc"){it + it}).isEqualTo("AbcAbc")
-        assert (applyFun("Zack"){it.toLowerCase()}).isEqualTo("zack")
+        assertThat(applyFun("Abc"){it + it}).isEqualTo("AbcAbc")
+        assertThat(applyFun("Zack"){it.toLowerCase()}).isEqualTo("zack")
 
     }
 
@@ -96,7 +97,7 @@ class LambdaTest {
         fun plusFactory(x: Int): (Int) -> Int = {y -> x + y}
 
         val plus3 = plusFactory(3)
-        assert (plus3(4)).isEqualTo(7)
+        assertThat(plus3(4)).isEqualTo(7)
 
     }
 
@@ -114,7 +115,7 @@ class LambdaTest {
         combine = {f,g -> {g(f(it))} }
         val doubleSquarePlusOne = combine(square, double)
 
-        assert(doubleSquarePlusOne(5)).isEqualTo(51)
+        assertThat(doubleSquarePlusOne(5)).isEqualTo(51)
 
     }
 

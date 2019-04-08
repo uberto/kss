@@ -1,7 +1,9 @@
 package com.ubertob.kotlin.kss.intro05
 
-import assertk.assert
-import assertk.assertions.*
+import assertk.assertThat
+import assertk.assertions.contains
+import assertk.assertions.doesNotContain
+import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
 
 class CollectionsTest {
@@ -16,9 +18,9 @@ class CollectionsTest {
         val notToBuy = "toy car"
         val all = pricesShop1 + pricesShop2 - notToBuy
 
-        assert(all).contains("cards", 5)
-        assert(all).contains("book", 6)
-        assert(all.keys).doesNotContain("toy car")
+        assertThat(all).contains("cards", 5)
+        assertThat(all).contains("book", 6)
+        assertThat(all.keys).doesNotContain("toy car")
     }
 
     fun palindrome(s: String) = s + s.reversed()
@@ -27,7 +29,7 @@ class CollectionsTest {
     fun namedFunctionAsParam(){
 
         val words = "It was a dark and stormy night".split(" ")
-        assert (words.map (::palindrome).joinToString())
+        assertThat (words.map (::palindrome).joinToString())
                 .isEqualTo("IttI, wassaw, aa, darkkrad, anddna, stormyymrots, nightthgin")
 
     }
@@ -38,7 +40,7 @@ class CollectionsTest {
 
         val total = (1 .. 20).toList().filter { it % 2 == 0 } .sum()
 
-        assert(total).isEqualTo(110)
+        assertThat(total).isEqualTo(110)
     }
 
     @Test
@@ -49,7 +51,7 @@ class CollectionsTest {
                 .map (square)
                 .sum()
 
-        assert(total).isEqualTo(4900)
+        assertThat(total).isEqualTo(4900)
     }
 
 
@@ -59,7 +61,7 @@ class CollectionsTest {
         val factor = (1 .. 10).toList()
                 .fold (1) { a, x -> a * x}
 
-        assert(factor).isEqualTo(3628800)
+        assertThat(factor).isEqualTo(3628800)
     }
 
 
@@ -70,7 +72,7 @@ class CollectionsTest {
         val factor = word
                 .fold ("") { a, c -> c + a }
 
-        assert(factor).isEqualTo("dlroW olleH")
+        assertThat(factor).isEqualTo("dlroW olleH")
     }
 
 
@@ -88,7 +90,7 @@ class CollectionsTest {
                 .sorted()
                 .groupingBy{ it }
                 .eachCount()
-        assert(charsList.get('l')).isEqualTo(4)
+        assertThat(charsList.get('l')).isEqualTo(4)
     }
 
     private fun fibonacciNumbers(): Sequence<Int> {
@@ -109,10 +111,10 @@ class CollectionsTest {
     fun sequenceAndTake() {
 
         val list = fibonacciNumbers().take(10).toList()
-        assert(list).isEqualTo(listOf(1, 2, 3, 5, 8, 13, 21, 34, 55, 89))
+        assertThat(list).isEqualTo(listOf(1, 2, 3, 5, 8, 13, 21, 34, 55, 89))
 
         val seq = fibonacciNumbers().take(4)
-        assert(seq.last()).isEqualTo(5)
+        assertThat(seq.last()).isEqualTo(5)
 
     }
 

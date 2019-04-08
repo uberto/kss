@@ -1,6 +1,7 @@
 package com.ubertob.kotlin.kss.intro08
 
 import assertk.assert
+import assertk.assertThat
 import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
 import java.util.*
@@ -18,7 +19,7 @@ class AdvancedFunTest {
 
         val res = sillyMulti(3, 50000)
 
-        assert(res).isEqualTo(150000)
+        assertThat(res).isEqualTo(150000)
 
     }
 
@@ -27,8 +28,8 @@ class AdvancedFunTest {
 
         fun Int.hello(): String = TODO()
 
-        assertk.assert(5.hello()).isEqualTo("Hi, I'm 5")
-        assertk.assert(42.hello()).isEqualTo("Hi, I'm 42")
+        assertk.assertThat(5.hello()).isEqualTo("Hi, I'm 5")
+        assertk.assertThat(42.hello()).isEqualTo("Hi, I'm 42")
 
     }
 
@@ -37,8 +38,8 @@ class AdvancedFunTest {
 
         fun Int?.hello(): String = TODO()
 
-        assertk.assert(5.hello()).isEqualTo("Hi, I'm 5")
-        assertk.assert(null.hello()).isEqualTo("Hi, I'm no one")
+        assertk.assertThat(5.hello()).isEqualTo("Hi, I'm 5")
+        assertk.assertThat(null.hello()).isEqualTo("Hi, I'm no one")
 
     }
 
@@ -47,8 +48,8 @@ class AdvancedFunTest {
 
         infix fun <A,B>A.pp(other: B): Pair<A,B> = TODO()
 
-        assertk.assert(5 pp 8).isEqualTo(Pair(5, 8))
-        assertk.assert("joe" pp 45).isEqualTo(Pair("joe", 45))
+        assertk.assertThat(5 pp 8).isEqualTo(Pair(5, 8))
+        assertk.assertThat("joe" pp 45).isEqualTo(Pair("joe", 45))
 
     }
 
@@ -58,8 +59,8 @@ class AdvancedFunTest {
 
         infix fun <A,B>A.`@`(other: B): Pair<A,B> = TODO()
 
-        assertk.assert(5 `@` 8).isEqualTo(Pair(5, 8))
-        assertk.assert("joe" `@` 45).isEqualTo(Pair("joe", 45))
+        assertk.assertThat(5 `@` 8).isEqualTo(Pair(5, 8))
+        assertk.assertThat("joe" `@` 45).isEqualTo(Pair("joe", 45))
 
     }
 
@@ -81,7 +82,7 @@ class AdvancedFunTest {
         dbConn.apply {
             val userName = fetchFromDb("u1234")
 
-            assert(userName).isEqualTo("joe")
+            assertThat(userName).isEqualTo("joe")
         }
 
     }
@@ -100,12 +101,12 @@ class AdvancedFunTest {
         val s1 = getOrDefault(" ") //find the value to make test pass
         val s2 = getOrDefault<String>(null)
 
-        assert(s1).isEqualTo(s2)
+        assertThat(s1).isEqualTo(s2)
 
         val d1 = getOrDefault(Date(0)) //find the value to make test pass
         val d2 = getOrDefault<Date>(null)
 
-        assert(d1.toString()).isEqualTo(d2.toString())
+        assertThat(d1.toString()).isEqualTo(d2.toString())
 
     }
 

@@ -1,6 +1,7 @@
 package com.ubertob.kotlin.kss.intro02
 
 import assertk.assert
+import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNotNull
 import org.junit.jupiter.api.Test
@@ -16,7 +17,7 @@ class FunTest {
             return "Kotlin is Fun"
         }
 
-        assert(myfun()).isEqualTo("Kotlin is Fun")
+        assertThat(myfun()).isEqualTo("Kotlin is Fun")
     }
 
     @Test
@@ -25,7 +26,7 @@ class FunTest {
         //replace TODO with a value to make the test pass
         fun myfun(): String = "Kotlin is Fun"
 
-        assert(myfun()).isEqualTo("Kotlin is Fun")
+        assertThat(myfun()).isEqualTo("Kotlin is Fun")
     }
 
     @Test
@@ -39,7 +40,7 @@ class FunTest {
             return myNestedFun()
         }
 
-        assert(myFun()).isEqualTo("Kotlin Fun can be nested!")
+        assertThat(myFun()).isEqualTo("Kotlin Fun can be nested!")
     }
 
 
@@ -49,7 +50,7 @@ class FunTest {
         //replace TODO with a value to make the test pass
         fun double(x: Int): Int = x + x
 
-        assert(double(5)).isEqualTo(10)
+        assertThat(double(5)).isEqualTo(10)
 
     }
 
@@ -60,7 +61,7 @@ class FunTest {
 
         val now: java.util.Date = Date()
 
-        assert(now).isNotNull()
+        assertThat(now).isNotNull()
 
     }
 
@@ -72,8 +73,8 @@ class FunTest {
             return x.toString()
         }
 
-        assert(answer(12)).isEqualTo("12")
-        assert(answer()).isEqualTo("42")
+        assertThat(answer(12)).isEqualTo("12")
+        assertThat(answer()).isEqualTo("42")
 
     }
 
@@ -86,8 +87,8 @@ class FunTest {
         fun pitagora(hypotenuse: Double, leg: Double): Double =
                 Math.sqrt(hypotenuse*hypotenuse - leg*leg)
 
-        assert(pitagora(5.0, 4.0)).isEqualTo(3.0)
-        assert(pitagora(leg = 4.0, hypotenuse = 5.0)).isEqualTo(3.0)
+        assertThat(pitagora(5.0, 4.0)).isEqualTo(3.0)
+        assertThat(pitagora(leg = 4.0, hypotenuse = 5.0)).isEqualTo(3.0)
 
     }
 
@@ -108,7 +109,7 @@ class FunTest {
 
         val result2 = myConcat("1","2","3") //choose correct arguments
 
-        assert(result).isEqualTo(result2)
+        assertThat(result).isEqualTo(result2)
     }
 
 
