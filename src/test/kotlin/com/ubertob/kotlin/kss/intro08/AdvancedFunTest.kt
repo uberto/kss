@@ -27,8 +27,8 @@ class AdvancedFunTest {
 
         fun Int.hello(): String = TODO()
 
-        assertk.assertThat(5.hello()).isEqualTo("Hi, I'm 5")
-        assertk.assertThat(42.hello()).isEqualTo("Hi, I'm 42")
+        assertThat(5.hello()).isEqualTo("Hi, I'm 5")
+        assertThat(42.hello()).isEqualTo("Hi, I'm 42")
 
     }
 
@@ -37,8 +37,8 @@ class AdvancedFunTest {
 
         fun Int?.hello(): String = TODO()
 
-        assertk.assertThat(5.hello()).isEqualTo("Hi, I'm 5")
-        assertk.assertThat(null.hello()).isEqualTo("Hi, I'm no one")
+        assertThat(5.hello()).isEqualTo("Hi, I'm 5")
+        assertThat(null.hello()).isEqualTo("Hi, I'm no one")
 
     }
 
@@ -47,8 +47,8 @@ class AdvancedFunTest {
 
         infix fun <A,B>A.pp(other: B): Pair<A,B> = TODO()
 
-        assertk.assertThat(5 pp 8).isEqualTo(Pair(5, 8))
-        assertk.assertThat("joe" pp 45).isEqualTo(Pair("joe", 45))
+        assertThat(5 pp 8).isEqualTo(Pair(5, 8))
+        assertThat("joe" pp 45).isEqualTo(Pair("joe", 45))
 
     }
 
@@ -58,8 +58,8 @@ class AdvancedFunTest {
 
         infix fun <A,B>A.`@`(other: B): Pair<A,B> = TODO()
 
-        assertk.assertThat(5 `@` 8).isEqualTo(Pair(5, 8))
-        assertk.assertThat("joe" `@` 45).isEqualTo(Pair("joe", 45))
+        assertThat(5 `@` 8).isEqualTo(Pair(5, 8))
+        assertThat("joe" `@` 45).isEqualTo(Pair("joe", 45))
 
     }
 
@@ -110,3 +110,9 @@ class AdvancedFunTest {
     }
 
 }
+
+//left to cover:
+//types Unit, Nothing, Generics in/out, Any?
+//scope functions, receiver lambdas, currying
+//interfaces, open class, by, properties, invoke
+//coroutines
