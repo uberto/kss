@@ -1,4 +1,4 @@
-package com.gamasoft.kotlin.kss.intro05
+package com.ubertob.kotlin.kss.intro05
 
 import assertk.assert
 import assertk.assertions.*

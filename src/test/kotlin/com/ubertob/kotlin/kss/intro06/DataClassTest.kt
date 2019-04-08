@@ -1,4 +1,4 @@
-package com.gamasoft.kotlin.kss.intro06
+package com.ubertob.kotlin.kss.intro06
 
 import assertk.assert
 import assertk.assertions.hasSize

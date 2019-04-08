@@ -1,8 +1,7 @@
-package com.gamasoft.kotlin.kss.intro08
+package com.ubertob.kotlin.kss.intro08
 
 import assertk.assert
 import assertk.assertions.isEqualTo
-import assertk.assertions.isLessThan
 import org.junit.jupiter.api.Test
 import java.util.*
 

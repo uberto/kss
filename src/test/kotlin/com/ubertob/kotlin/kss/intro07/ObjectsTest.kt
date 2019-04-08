@@ -1,4 +1,4 @@
-package com.gamasoft.kotlin.kss.intro07
+package com.ubertob.kotlin.kss.intro07
 
 import assertk.assert
 import assertk.assertions.isEqualTo
