@@ -1,6 +1,5 @@
 package com.ubertob.kotlin.kss.intro06
 
-import assertk.assert
 import assertk.assertThat
 import assertk.assertions.hasSize
 import assertk.assertions.isEqualTo

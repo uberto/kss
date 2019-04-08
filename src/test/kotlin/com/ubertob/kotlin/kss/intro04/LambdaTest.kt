@@ -1,6 +1,5 @@
 package com.ubertob.kotlin.kss.intro04
 
-import assertk.assert
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
