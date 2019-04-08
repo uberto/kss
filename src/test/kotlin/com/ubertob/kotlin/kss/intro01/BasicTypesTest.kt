@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test
 
 class BasicTypesTest {
 
+    //Basic rule: never change the assertions!
 
     @Test
     fun valOrVar(){

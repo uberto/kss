@@ -11,13 +11,20 @@ https://medium.com/@ramtop/have-fun-and-learn-kotlin-25daa2e366c0
 
 1) clone the repository
 
-2) fix the tests starting from the intro01 package and going in order
+2) ./gradlew build (it should download dependency, compile and then fail with the first test)
 
-3) tweet me at @ramtop when finished! :)
+
+3) fix the tests starting from the intro01 package and going in order
+ - all tests must pass
+ - you can change any line in the test but not the assertions
+ - follow the guidelines in the comment
+ - enjoy f
+
+4) tweet me at @ramtop when finished! :)
 
 Any feedback is welcome.
 
 
 # Solutions:
 
-You can see mine solution in the branch solutions
+You can see my solutions in the branch solutions
