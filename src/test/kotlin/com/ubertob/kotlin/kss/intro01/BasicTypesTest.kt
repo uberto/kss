@@ -1,7 +1,10 @@
 package com.ubertob.kotlin.kss.intro01
 
 import assertk.assertThat
-import assertk.assertions.*
+import assertk.assertions.containsAll
+import assertk.assertions.containsNone
+import assertk.assertions.hasSize
+import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
 
 class BasicTypesTest {
@@ -68,7 +71,7 @@ class BasicTypesTest {
 
         var tot = 0
 
-        //find the right range
+        //find the right range for the for loop
         for (x in 1 .. 10) {
             tot += x * x
         }
@@ -100,7 +103,7 @@ class BasicTypesTest {
 
         val odds2 = (1 .. 10 step 2).toList().toTypedArray()
 
-        assertThat(odds).containsExactly(*odds2)
+        assertThat(odds).isEqualTo(odds2)
     }
 
 
@@ -108,7 +111,10 @@ class BasicTypesTest {
     fun mutableList(){
 
         val myList: MutableList<Int> = mutableListOf()
-        (1 .. 10).forEach{ myList.add(it) }
+
+        for (i in 1 .. 10){  //change the range to make test pass
+            myList.add(i)
+        }
 
         assertThat(myList).hasSize(42)
 
@@ -120,11 +126,10 @@ class BasicTypesTest {
 
         val myList = (1 .. 10).toList()
 
-        var myList2 = listOf(1,2,3,4)
+        //add something to myList2 constructor to make the test pass
+        val myList2 = listOf(1,2,3,4)
 
-        //add something to myList2 to make the test pass
-
-        assertThat(myList).containsExactly(*myList2.toTypedArray())
+        assertThat(myList).isEqualTo(myList2)
 
     }
 
@@ -136,6 +141,7 @@ class BasicTypesTest {
 
         val chars = ('a'..'z').toList()
 
+        // fix the lists combination
         val all = nums + chars
 
         assertThat(all).containsAll('a', 'z', '0', '9')
@@ -144,6 +150,7 @@ class BasicTypesTest {
     @Test
     fun listMinusOperator(){
 
+        //find the error
         val chars = ('a'..'z').toList()
         val vowels = listOf('a', 'e', 'u')
 
@@ -157,6 +164,8 @@ class BasicTypesTest {
     fun joinString(){
 
         val names = listOf("John", "Horton", "Conway")
+
+        // substitute TODO with the correct function
         val fullName: String = TODO()
 
         assertThat(fullName).isEqualTo("John Horton Conway")
