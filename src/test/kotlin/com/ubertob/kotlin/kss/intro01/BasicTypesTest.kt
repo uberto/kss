@@ -1,7 +1,10 @@
 package com.ubertob.kotlin.kss.intro01
 
 import assertk.assertThat
-import assertk.assertions.*
+import assertk.assertions.containsAll
+import assertk.assertions.containsNone
+import assertk.assertions.hasSize
+import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
 
 class BasicTypesTest {
@@ -15,7 +18,6 @@ class BasicTypesTest {
 
         val iCannotChange = "42".toInt()
 
-        iCanChange = 42
         //add something here to make it pass
 
         assertThat(iCanChange).isEqualTo(iCannotChange)
@@ -31,7 +33,6 @@ class BasicTypesTest {
             line 1
             line 2
             line 3
-            line 4
         """.trimIndent()
 
         assertThat(multiline.lines().size).isEqualTo(4)
@@ -42,7 +43,7 @@ class BasicTypesTest {
     fun templateString(){
 
         //change string to pass the test
-        val mid = "b c"
+        val mid = "123"
         val letters = "a $mid d".trimIndent()
 
         assertThat(letters).isEqualTo("a b c d")
@@ -57,7 +58,7 @@ class BasicTypesTest {
         var strip = ""
         for (c in str) {
             //fix the range to pass the test
-            strip += if (c in 'a'..'z') c else '_'
+            strip += if (c in 'a'..'a') c else '_'
         }
 
         assertThat(strip).isEqualTo("hello___")
@@ -70,8 +71,8 @@ class BasicTypesTest {
 
         var tot = 0
 
-        //find the right range
-        for (x in 1 .. 24) {
+        //find the right range for the for loop
+        for (x in 1 .. 10) {
             tot += x * x
         }
 
@@ -86,7 +87,7 @@ class BasicTypesTest {
             var rev = ""
             //find the right range
             for (i in s.length.downTo(1)) {
-                rev += s[i - 1]
+                rev += s[i]
             }
             return rev
         }
@@ -98,11 +99,11 @@ class BasicTypesTest {
     @Test
     fun arrays(){
         // fix the arguments to make test pass
-        val odds: Array<Int> = arrayOf(1,3,5,7,9)
+        val odds: Array<Int> = arrayOf(1,2,3)
 
         val odds2 = (1 .. 10 step 2).toList().toTypedArray()
 
-        assertThat(odds).containsExactly(*odds2)
+        assertThat(odds).isEqualTo(odds2)
     }
 
 
@@ -110,7 +111,10 @@ class BasicTypesTest {
     fun mutableList(){
 
         val myList: MutableList<Int> = mutableListOf()
-        (1 .. 42).forEach{ myList.add(it) }
+
+        for (i in 1 .. 10){  //change the range to make test pass
+            myList.add(i)
+        }
 
         assertThat(myList).hasSize(42)
 
@@ -122,12 +126,10 @@ class BasicTypesTest {
 
         val myList = (1 .. 10).toList()
 
-        var myList2 = listOf(1,2,3,4)
+        //add something to myList2 constructor to make the test pass
+        val myList2 = listOf(1,2,3,4)
 
-        myList2 += listOf(5,6,7,8,9,10)
-        //add something to myList2 to make the test pass
-
-        assertThat(myList).containsExactly(*myList2.toTypedArray())
+        assertThat(myList).isEqualTo(myList2)
 
     }
 
@@ -135,10 +137,11 @@ class BasicTypesTest {
     @Test
     fun listPlusOperator(){
 
-        val nums = ('0' .. '9').toList()
+        val nums = ('1' .. '9').toList()
 
         val chars = ('a'..'z').toList()
 
+        // fix the lists combination
         val all = nums + chars
 
         assertThat(all).containsAll('a', 'z', '0', '9')
@@ -147,8 +150,9 @@ class BasicTypesTest {
     @Test
     fun listMinusOperator(){
 
+        //find the error
         val chars = ('a'..'z').toList()
-        val vowels = listOf('a', 'e', 'i', 'o', 'u')
+        val vowels = listOf('a', 'e', 'u')
 
         val consonants = chars - vowels
 
@@ -160,7 +164,9 @@ class BasicTypesTest {
     fun joinString(){
 
         val names = listOf("John", "Horton", "Conway")
-        val fullName: String = names.joinToString(" ")
+
+        // substitute TODO with the correct function
+        val fullName: String = TODO()
 
         assertThat(fullName).isEqualTo("John Horton Conway")
 
