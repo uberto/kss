@@ -1,6 +1,7 @@
 package com.ubertob.kotlin.kss.intro03
 
 import assertk.assert
+import assertk.assertThat
 import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
 
@@ -13,7 +14,7 @@ class NullableTest {
 
         val x: Int? = TODO()
 
-        assert(x).isEqualTo(null)
+        assertThat(x).isEqualTo(null)
 
     }
 
@@ -26,7 +27,7 @@ class NullableTest {
 
         val y = x?.plus(5)
 
-        assert(y).isEqualTo(null)
+        assertThat(y).isEqualTo(null)
 
     }
 
@@ -36,7 +37,7 @@ class NullableTest {
 
         val a: String? = TODO()
 
-        assert(a.orEmpty()).isEqualTo("")
+        assertThat(a.orEmpty()).isEqualTo("")
     }
 
 
@@ -49,8 +50,8 @@ class NullableTest {
         fun nullDouble(x: Int?) = if (x == null) TODO() else double(x)
 
 
-        assert(nullDouble(5)).isEqualTo(10)
-        assert(nullDouble(null)).isEqualTo(0)
+        assertThat(nullDouble(5)).isEqualTo(10)
+        assertThat(nullDouble(null)).isEqualTo(0)
     }
 
     @Test
@@ -59,8 +60,8 @@ class NullableTest {
         //fix parameters to make test pass
         fun triple(x: Int?) = x?.times(5)
 
-        assert(triple(null)).isEqualTo(null)
-        assert(triple(4)).isEqualTo(12)
+        assertThat(triple(null)).isEqualTo(null)
+        assertThat(triple(4)).isEqualTo(12)
     }
 
     @Test
@@ -71,8 +72,8 @@ class NullableTest {
         //replace TODO with a value to make the test pass
         fun nullDouble(x: Int?) = double(x ?: TODO())
 
-        assert(nullDouble(5)).isEqualTo(10)
-        assert(nullDouble(null)).isEqualTo(0)
+        assertThat(nullDouble(5)).isEqualTo(10)
+        assertThat(nullDouble(null)).isEqualTo(0)
     }
 
     @Test
@@ -82,8 +83,8 @@ class NullableTest {
         fun name(first: String, middle: String?, surname: String){
             TODO()
         }
-        assert(name("James", "Tiberius", "Kirk")).isEqualTo("James T. Kirk")
-        assert(name("John", null, "Doe")).isEqualTo("John Doe")
+        assertThat(name("James", "Tiberius", "Kirk")).isEqualTo("James T. Kirk")
+        assertThat(name("John", null, "Doe")).isEqualTo("John Doe")
 
     }
 

@@ -1,6 +1,7 @@
 package com.ubertob.kotlin.kss.intro07
 
 import assertk.assert
+import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isLessThan
 import org.junit.jupiter.api.Test
@@ -21,7 +22,7 @@ class ObjectsTest {
         Thread.sleep(1)
         val u2 = User.createRnd()
 
-        assertk.assert(u1.since).isLessThan(u2.since)
+        assertk.assertThat(u1.since).isLessThan(u2.since)
 
     }
 
@@ -37,7 +38,7 @@ class ObjectsTest {
         Thread.sleep(1)
         val u2 = User.createRnd()
 
-        assertk.assert(u1.since).isLessThan(u2.since)
+        assertk.assertThat(u1.since).isLessThan(u2.since)
 
     }
 
@@ -55,8 +56,8 @@ class ObjectsTest {
             is TreeNode.Leaf -> TODO()
         }
 
-        assert(desc(TreeNode.Root)).isEqualTo("root")
-        assert(desc(TreeNode.Leaf(TreeNode.Root, 42))).isEqualTo("leaf 42")
+        assertThat(desc(TreeNode.Root)).isEqualTo("root")
+        assertThat(desc(TreeNode.Leaf(TreeNode.Root, 42))).isEqualTo("leaf 42")
     }
 
 
@@ -69,8 +70,8 @@ class ObjectsTest {
 
         fun sumToRoot(node: TreeNode): Int = TODO() //return the sum of values of all parents from node to root
 
-        assert(sumToRoot(n3)).isEqualTo(8)
-        assert(sumToRoot(n4)).isEqualTo(13)
+        assertThat(sumToRoot(n3)).isEqualTo(8)
+        assertThat(sumToRoot(n4)).isEqualTo(13)
 
     }
 
@@ -84,8 +85,8 @@ class ObjectsTest {
         //assign some values to the cache to pass the test
         TODO()
 
-        assert(MyCache["ten"]).isEqualTo(10)
-        assert(MyCache["five"]).isEqualTo(5)
+        assertThat(MyCache["ten"]).isEqualTo(10)
+        assertThat(MyCache["five"]).isEqualTo(5)
 
     }
 
@@ -101,7 +102,7 @@ class ObjectsTest {
 
         val sortedList = listOf(4,6,2,6,7,9,0,5).sortedWith(firstOddNumbers)
 
-        assert(sortedList.first()).isEqualTo(5)
+        assertThat(sortedList.first()).isEqualTo(5)
 
     }
 

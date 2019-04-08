@@ -1,6 +1,7 @@
 package com.ubertob.kotlin.kss.intro06
 
 import assertk.assert
+import assertk.assertThat
 import assertk.assertions.hasSize
 import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
@@ -39,7 +40,7 @@ class DataClassTest {
 
         val under30 = people.filter { it.age < 30 }
 
-        assert (under30).hasSize(1)
+        assertThat(under30).hasSize(1)
 
     }
 
@@ -52,8 +53,8 @@ class DataClassTest {
 
         val joe = joey.copy(name = "joe")
 
-        assert (joe.name).isEqualTo("joe")
-        assert (joe.age).isEqualTo(27)
+        assertThat(joe.name).isEqualTo("joe")
+        assertThat(joe.age).isEqualTo(27)
     }
 
     @Test
@@ -62,8 +63,8 @@ class DataClassTest {
         val p1 = Point(3, 4)
         val p2 = Point(6, -7)
 
-        assert (p1.dist).isEqualTo(5.0)
-        assert (p2.dist).isEqualTo(10.0)
+        assertThat(p1.dist).isEqualTo(5.0)
+        assertThat(p2.dist).isEqualTo(10.0)
     }
 
 
@@ -78,9 +79,9 @@ class DataClassTest {
 
         val profiles= people.map { (name, age) -> name +age }
 
-        assert (profiles[0]).isEqualTo("joe: 24")
-        assert (profiles[1]).isEqualTo("anne: 25")
-        assert (profiles[2]).isEqualTo("mary: 26")
+        assertThat(profiles[0]).isEqualTo("joe: 24")
+        assertThat(profiles[1]).isEqualTo("anne: 25")
+        assertThat(profiles[2]).isEqualTo("mary: 26")
     }
 
     @Test
@@ -90,8 +91,8 @@ class DataClassTest {
 
         val (x, y) = middlePoint(Point(4, 7), Point(6, 9))
 
-        assert (x).isEqualTo(5)
-        assert (y).isEqualTo(8)
+        assertThat(x).isEqualTo(5)
+        assertThat(y).isEqualTo(8)
     }
 
     @Test
@@ -101,8 +102,8 @@ class DataClassTest {
             TODO()
         }
 
-        assert (getName(Option("VOD.L", "Call"))).isEqualTo("Option")
-        assert (getName(Future("BT.L", 60))).isEqualTo("Future")
+        assertThat(getName(Option("VOD.L", "Call"))).isEqualTo("Option")
+        assertThat(getName(Future("BT.L", 60))).isEqualTo("Future")
     }
 
 
@@ -112,9 +113,9 @@ class DataClassTest {
         fun splitDate(date: String): Triple<Int, Int, Int> = TODO()
 
         val (day, month, year) = splitDate("12/05/2018")
-        assert(day).isEqualTo(12)
-        assert(month).isEqualTo(5)
-        assert(year).isEqualTo(2018)
+        assertThat(day).isEqualTo(12)
+        assertThat(month).isEqualTo(5)
+        assertThat(year).isEqualTo(2018)
 
     }
 
@@ -128,7 +129,7 @@ class DataClassTest {
 
         val p3 = p1 + p2
 
-        assert(p3).isEqualTo(Point(1,1))
+        assertThat(p3).isEqualTo(Point(1,1))
 
     }
 
@@ -141,8 +142,8 @@ class DataClassTest {
             is EquitySwap -> TODO()
         }
 
-        assert (fullDescription(Option("VOD.L", "Call"))).isEqualTo("Option Call VOD.L")
-        assert (fullDescription(Future("BT.L", 60))).isEqualTo("Future 60 days BT.L")
+        assertThat(fullDescription(Option("VOD.L", "Call"))).isEqualTo("Option Call VOD.L")
+        assertThat(fullDescription(Future("BT.L", 60))).isEqualTo("Future 60 days BT.L")
     }
 
 
@@ -155,8 +156,8 @@ class DataClassTest {
 
         fun instr(f: FinancialFun, stock: String): FinancialInstrument = TODO()
 
-        assert (instr(futureSixtyDaysFactory, "IBM.N")).isEqualTo(Future("IBM.N", 60))
-        assert (instr(callOptionFactory, "AAPL.OQ")).isEqualTo(Option("AAPL.OQ", "Call"))
+        assertThat(instr(futureSixtyDaysFactory, "IBM.N")).isEqualTo(Future("IBM.N", 60))
+        assertThat(instr(callOptionFactory, "AAPL.OQ")).isEqualTo(Option("AAPL.OQ", "Call"))
     }
 
 }

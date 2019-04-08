@@ -1,6 +1,6 @@
 package com.ubertob.kotlin.kss.intro01
 
-import assertk.assert
+import assertk.assertThat
 import assertk.assertions.*
 import org.junit.jupiter.api.Test
 
@@ -16,7 +16,7 @@ class BasicTypesTest {
 
         //add something here to make it pass
 
-        assert(iCanChange).isEqualTo(iCannotChange)
+        assertThat(iCanChange).isEqualTo(iCannotChange)
 
     }
 
@@ -31,7 +31,7 @@ class BasicTypesTest {
             line 3
         """.trimIndent()
 
-        assert(multiline.lines().size).isEqualTo(4)
+        assertThat(multiline.lines().size).isEqualTo(4)
 
     }
 
@@ -42,7 +42,7 @@ class BasicTypesTest {
         val mid = "123"
         val letters = "a $mid d".trimIndent()
 
-        assert(letters).isEqualTo("a b c d")
+        assertThat(letters).isEqualTo("a b c d")
 
     }
 
@@ -57,7 +57,7 @@ class BasicTypesTest {
             strip += if (c in 'a'..'a') c else '_'
         }
 
-        assert(strip).isEqualTo("hello___")
+        assertThat(strip).isEqualTo("hello___")
 
     }
 
@@ -72,7 +72,7 @@ class BasicTypesTest {
             tot += x * x
         }
 
-        assert(tot).isEqualTo(70*70)
+        assertThat(tot).isEqualTo(70*70)
 
     }
 
@@ -88,7 +88,7 @@ class BasicTypesTest {
             return rev
         }
 
-        assert(reverse("Hello")).isEqualTo("olleH")
+        assertThat(reverse("Hello")).isEqualTo("olleH")
 
     }
 
@@ -99,7 +99,7 @@ class BasicTypesTest {
 
         val odds2 = (1 .. 10 step 2).toList().toTypedArray()
 
-        assert(odds).containsExactly(*odds2)
+        assertThat(odds).containsExactly(*odds2)
     }
 
 
@@ -109,7 +109,7 @@ class BasicTypesTest {
         val myList: MutableList<Int> = mutableListOf()
         (1 .. 10).forEach{ myList.add(it) }
 
-        assert(myList).hasSize(42)
+        assertThat(myList).hasSize(42)
 
     }
 
@@ -123,7 +123,7 @@ class BasicTypesTest {
 
         //add something to myList2 to make the test pass
 
-        assert(myList).containsExactly(*myList2.toTypedArray())
+        assertThat(myList).containsExactly(*myList2.toTypedArray())
 
     }
 
@@ -137,7 +137,7 @@ class BasicTypesTest {
 
         val all = nums + chars
 
-        assert(all).containsAll('a', 'z', '0', '9')
+        assertThat(all).containsAll('a', 'z', '0', '9')
     }
 
     @Test
@@ -148,8 +148,8 @@ class BasicTypesTest {
 
         val consonants = chars - vowels
 
-        assert(consonants).containsAll('b', 'k', 'z')
-        assert(consonants).containsNone('a', 'e', 'i', 'o', 'u')
+        assertThat(consonants).containsAll('b', 'k', 'z')
+        assertThat(consonants).containsNone('a', 'e', 'i', 'o', 'u')
     }
 
     @Test
@@ -158,7 +158,7 @@ class BasicTypesTest {
         val names = listOf("John", "Horton", "Conway")
         val fullName: String = TODO()
 
-        assert(fullName).isEqualTo("John Horton Conway")
+        assertThat(fullName).isEqualTo("John Horton Conway")
 
     }
 

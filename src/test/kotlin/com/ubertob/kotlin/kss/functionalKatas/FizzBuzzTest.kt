@@ -1,6 +1,7 @@
 package com.ubertob.kotlin.kss.functionalKatas
 
 import assertk.assert
+import assertk.assertThat
 import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.Test
 
@@ -19,17 +20,17 @@ class FizzBuzzTest {
     @Test
     fun baseKata(){
 
-        assert(fizzBuzz(1)).isEqualTo("1")
-        assert(fizzBuzz(2)).isEqualTo("2")
-        assert(fizzBuzz(3)).isEqualTo("fizz")
-        assert(fizzBuzz(4)).isEqualTo("4")
-        assert(fizzBuzz(5)).isEqualTo("buzz")
-        assert(fizzBuzz(6)).isEqualTo("fizz")
-        assert(fizzBuzz(7)).isEqualTo("7")
-        assert(fizzBuzz(8)).isEqualTo("8")
-        assert(fizzBuzz(9)).isEqualTo("fizz")
-        assert(fizzBuzz(10)).isEqualTo("buzz")
-        assert(fizzBuzz(15)).isEqualTo("fizzbuzz")
+        assertThat(fizzBuzz(1)).isEqualTo("1")
+        assertThat(fizzBuzz(2)).isEqualTo("2")
+        assertThat(fizzBuzz(3)).isEqualTo("fizz")
+        assertThat(fizzBuzz(4)).isEqualTo("4")
+        assertThat(fizzBuzz(5)).isEqualTo("buzz")
+        assertThat(fizzBuzz(6)).isEqualTo("fizz")
+        assertThat(fizzBuzz(7)).isEqualTo("7")
+        assertThat(fizzBuzz(8)).isEqualTo("8")
+        assertThat(fizzBuzz(9)).isEqualTo("fizz")
+        assertThat(fizzBuzz(10)).isEqualTo("buzz")
+        assertThat(fizzBuzz(15)).isEqualTo("fizzbuzz")
 
     }
 
@@ -37,17 +38,17 @@ class FizzBuzzTest {
     @Test
     fun extension(){
 
-        assert(fizzBuzzGulp(1)).isEqualTo("1")
-        assert(fizzBuzzGulp(2)).isEqualTo("gulp")
-        assert(fizzBuzzGulp(3)).isEqualTo("fizz")
-        assert(fizzBuzzGulp(4)).isEqualTo("gulp")
-        assert(fizzBuzzGulp(5)).isEqualTo("buzz")
-        assert(fizzBuzzGulp(6)).isEqualTo("fizzgulp")
-        assert(fizzBuzzGulp(7)).isEqualTo("7")
-        assert(fizzBuzzGulp(8)).isEqualTo("gulp")
-        assert(fizzBuzzGulp(9)).isEqualTo("fizz")
-        assert(fizzBuzzGulp(10)).isEqualTo("buzzgulp")
-        assert(fizzBuzz(15)).isEqualTo("fizzbuzz")
+        assertThat(fizzBuzzGulp(1)).isEqualTo("1")
+        assertThat(fizzBuzzGulp(2)).isEqualTo("gulp")
+        assertThat(fizzBuzzGulp(3)).isEqualTo("fizz")
+        assertThat(fizzBuzzGulp(4)).isEqualTo("gulp")
+        assertThat(fizzBuzzGulp(5)).isEqualTo("buzz")
+        assertThat(fizzBuzzGulp(6)).isEqualTo("fizzgulp")
+        assertThat(fizzBuzzGulp(7)).isEqualTo("7")
+        assertThat(fizzBuzzGulp(8)).isEqualTo("gulp")
+        assertThat(fizzBuzzGulp(9)).isEqualTo("fizz")
+        assertThat(fizzBuzzGulp(10)).isEqualTo("buzzgulp")
+        assertThat(fizzBuzz(15)).isEqualTo("fizzbuzz")
 
     }
 }
