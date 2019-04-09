@@ -126,8 +126,9 @@ class BasicTypesTest {
 
         val myList = (1 .. 10).toList()
 
-        //add something to myList2 constructor to make the test pass
-        val myList2 = listOf(1,2,3,4)
+        //change emptylist with something else to make the test pass
+        val myList2 = listOf(1,2,3,4) + emptyList()
+
 
         assertThat(myList).isEqualTo(myList2)
 

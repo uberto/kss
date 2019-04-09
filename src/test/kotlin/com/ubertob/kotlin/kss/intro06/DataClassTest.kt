@@ -128,7 +128,7 @@ class DataClassTest {
 
         val p3 = p1 + p2
 
-        assertThat(p3).isEqualTo(Point(1,1))
+        assertThat(p3).isEqualTo(Point(7,12))
 
     }
 
