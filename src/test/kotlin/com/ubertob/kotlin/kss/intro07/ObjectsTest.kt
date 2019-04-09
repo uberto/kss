@@ -93,8 +93,8 @@ class ObjectsTest {
     fun objectAsInstanceOfAnonClass(){
 
         val firstOddNumbers = object : Comparator<Int> {
-            override fun compare(o1: Int?, o2: Int?): Int {
-                TODO()
+            override fun compare(o1: Int, o2: Int): Int {
+                TODO() //write a function that return fist the odd numbers then the even numbers
             }
 
         }
