@@ -5,12 +5,13 @@ import assertk.assertions.isEqualTo
 import assertk.assertions.isLessThan
 import org.junit.jupiter.api.Test
 import java.time.Instant
+import kotlin.random.Random
 
 class ObjectsTest {
 
     data class User (val name: String, val since: Instant) {
         companion object {
-            fun createRnd():User = TODO()
+            fun createRnd():User = User(name = "user" + Random.nextInt(1000), since = Instant.now())
         }
     }
 
@@ -51,8 +52,8 @@ class ObjectsTest {
     fun nodeTree(){
         fun desc(node: TreeNode): String =
         when (node){
-            is TreeNode.Root -> TODO()
-            is TreeNode.Leaf -> TODO()
+            is TreeNode.Root -> "root"
+            is TreeNode.Leaf -> "leaf ${node.value}"
         }
 
         assertThat(desc(TreeNode.Root)).isEqualTo("root")
@@ -67,7 +68,16 @@ class ObjectsTest {
         val n3 = TreeNode.Leaf(n1, 5)
         val n4 = TreeNode.Leaf(n2, 6)
 
-        fun sumToRoot(node: TreeNode): Int = TODO() //return the sum of values of all parents from node to root
+
+        fun partialsum(node: TreeNode, acc: Int): Int =
+                when(node){
+                    is TreeNode.Root -> acc
+                    is TreeNode.Leaf -> partialsum(node.parent, acc + node.value)
+                }
+
+        fun sumToRoot(node: TreeNode): Int =  //return the sum of values of all parents from node to root
+            partialsum(node, 0)
+
 
         assertThat(sumToRoot(n3)).isEqualTo(8)
         assertThat(sumToRoot(n4)).isEqualTo(13)
@@ -82,7 +92,8 @@ class ObjectsTest {
     fun objectAsSingleton(){
 
         //assign some values to the cache to pass the test
-        TODO()
+        MyCache["ten"] = 10
+        MyCache["five"] = 5
 
         assertThat(MyCache["ten"]).isEqualTo(10)
         assertThat(MyCache["five"]).isEqualTo(5)
@@ -93,9 +104,14 @@ class ObjectsTest {
     fun objectAsInstanceOfAnonClass(){
 
         val firstOddNumbers = object : Comparator<Int> {
-            override fun compare(o1: Int?, o2: Int?): Int {
-                TODO()
-            }
+            override fun compare(o1: Int, o2: Int): Int =
+                    if (o1.isOdd() && !o2.isOdd()) {
+                        -1
+                    } else if (!o1.isOdd() && o2.isOdd()) {
+                        1
+                    } else{
+                        o1 - o2
+                    }
 
         }
 
@@ -107,3 +123,5 @@ class ObjectsTest {
 
 
 }
+
+private fun Int.isOdd(): Boolean = this % 2 == 1
