@@ -1,3 +1,6 @@
+http://github.com/uberto/kss
+
+
 # Have Fun and Learn Kotlin!
 
 Exercises to learn Kotlin a test at a time
@@ -37,4 +40,4 @@ https://medium.com/@ramtop/kotlin-pearls-3-its-an-object-it-s-a-function-it-s-an
 
 # Solutions:
 
-You can see my solutions in the branch solutions
+You can see my solutions in the branch *solutions*
