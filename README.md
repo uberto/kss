@@ -32,10 +32,13 @@ Any feedback is welcome.
 #Hints:
 You can check my blog posts on Kotlin:
 
-https://medium.com/@ramtop/kotlin-scope-functions-c8c41f09615f
-https://medium.com/@ramtop/kotlin-pearls-sealed-class-override-b951dcd752c6
-https://medium.com/@ramtop/kotlin-pearls-lambdas-with-a-context-58f26ab2eb1d
-https://medium.com/@ramtop/kotlin-pearls-3-its-an-object-it-s-a-function-it-s-an-invokable-bc4bfed2e63f
+- https://medium.com/@ramtop/kotlin-scope-functions-c8c41f09615f
+
+- https://medium.com/@ramtop/kotlin-pearls-sealed-class-override-b951dcd752c6
+
+- https://medium.com/@ramtop/kotlin-pearls-lambdas-with-a-context-58f26ab2eb1d
+
+- https://medium.com/@ramtop/kotlin-pearls-3-its-an-object-it-s-a-function-it-s-an-invokable-bc4bfed2e63f
 
 
 # Solutions:
