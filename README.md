@@ -31,8 +31,10 @@ Any feedback is welcome.
 
 
 #Hints:
- to run all test of single package from command line
- - ./gradlew test --tests com.ubertob.kotlin.kss.intro01.*
+ to run all test of single package from command line:
+ 
+ ```./gradlew test --tests com.ubertob.kotlin.kss.intro01.*```
+ 
  
 You can check my blog posts on Kotlin:
 
