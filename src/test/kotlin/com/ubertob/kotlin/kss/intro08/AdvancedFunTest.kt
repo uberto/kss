@@ -65,13 +65,11 @@ class AdvancedFunTest {
 
 
     interface DbContext{
-        fun DbContext.fetchFromDb(key: String):String
+        fun DbContext.fetchFromDb(id: Int):String
     }
 
     class InMemDb: DbContext{
-        override fun DbContext.fetchFromDb(key: String): String {
-            TODO()
-        }
+        override fun DbContext.fetchFromDb(id: Int): String = TODO()
     }
 
     @Test
@@ -79,12 +77,13 @@ class AdvancedFunTest {
         val dbConn = InMemDb()
 
         dbConn.apply {
-            val userName = fetchFromDb("u1234")
 
-            assertThat(userName).isEqualTo("joe")
+            assertThat(fetchFromDb(1)).isEqualTo("Joe")
+            assertThat(fetchFromDb(2)).isEqualTo("Fred")
         }
 
     }
+
 
 
     inline fun <reified T> getOrDefault(value: T?):T {
