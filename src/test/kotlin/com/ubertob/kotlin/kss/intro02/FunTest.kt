@@ -65,9 +65,9 @@ class FunTest {
     fun defaultParameter(){
 
         // fix it to make test pass
-        fun answer(x: Int = 37){
+        fun answer(x: Int = 37) =
             x.toString()
-        }
+
 
         assertThat(answer(12)).isEqualTo("12")
         assertThat(answer()).isEqualTo("42")
