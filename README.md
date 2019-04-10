@@ -15,6 +15,8 @@ https://medium.com/@ramtop/have-fun-and-learn-kotlin-25daa2e366c0
 1) clone/fork the repository
 
 2) ./gradlew build (it should download dependency, compile and then fail with the first test)
+   ./gradlew test --tests com.ubertob.kotlin.kss.intro01.* (to run all test of single package)
+
 
 3) fix the tests starting from the intro01 package and going in order
  - all tests must pass
