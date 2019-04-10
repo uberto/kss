@@ -1,4 +1,4 @@
-# Kotlin: The Server Side
+# Have Fun and Learn Kotlin!
 
 Exercises to learn Kotlin a test at a time
 
