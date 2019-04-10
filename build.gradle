@@ -29,5 +29,5 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    testLogging
+    testLogging.showStandardStreams = true
 }
